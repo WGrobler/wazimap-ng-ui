@@ -7,9 +7,12 @@ import {API} from './api';
 import * as Sentry from '@sentry/browser';
 import {getHostname, getAPIUrl, loadDevTools} from './utils';
 import {ErrorNotifier} from "./error-notifier";
+require('dotenv').config();
 
-const mainUrl = getAPIUrl('https://staging.wazimap-ng.openup.org.za');
-const productionUrl = getAPIUrl('https://production.wazimap-ng.openup.org.za');
+//const mainUrl = getAPIUrl('https://staging.wazimap-ng.openup.org.za');
+const mainUrl = getAPIUrl(process.env.mainUrl);
+//const productionUrl = getAPIUrl('https://production.wazimap-ng.openup.org.za');
+const productionUrl = getAPIUrl(process.env.productionUrl);
 let config = new SAConfig();
 
 let hostname = getHostname();
